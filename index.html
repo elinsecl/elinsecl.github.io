@@ -314,17 +314,20 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const sections = document.querySelectorAll(".about-me, .knowledge, .projects, .achievements, .contact");
-    
+
             function reveal() {
                 let windowHeight = window.innerHeight;
                 sections.forEach(section => {
                     let sectionTop = section.getBoundingClientRect().top;
-                    if (sectionTop < windowHeight - 70) {
+                    let sectionBottom = section.getBoundingClientRect().bottom;
+                    if (sectionTop < windowHeight - 70 && sectionBottom > 0) {
                         section.classList.add("show");
+                    } else {
+                        section.classList.remove("show");
                     }
                 });
             }
-    
+
             window.addEventListener("scroll", reveal);
             reveal();
         });
