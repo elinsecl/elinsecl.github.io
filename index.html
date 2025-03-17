@@ -18,6 +18,7 @@
             line-height: 1.6;
             text-align: center;
             cursor: url('https://cur.cursors-4u.net/games/gam-1/gam99.ani'), auto;
+            padding-bottom: 60px; /* Evita que el contenido sea tapado por el footer */
         }
 
         header {
@@ -45,6 +46,7 @@
             padding: 20px;
             max-width: 900px;
             margin: 0 auto;
+            min-height: 80vh; /* Evita que el footer suba demasiado */
         }
 
         /* Sección "Sobre Mí" */
@@ -158,9 +160,8 @@
             background: linear-gradient(90deg, #ff00ff, #00ffff);
             text-align: center;
             padding: 10px;
-            position: fixed;
+            position: relative; /* Se cambió de fixed a relative */
             width: 100%;
-            bottom: 0;
             box-shadow: 0 -4px 10px #ff00ff;
         }
 
@@ -204,7 +205,6 @@
                     <p>Aplicación en C# para gestionar un centro comercial con operaciones CRUD.</p>
                     <a href="https://github.com/elinsecl/GestionComercial.git" target="_blank">Repositorio</a>
                 </div>
-               
             </div>
         </section>
     </div>
