@@ -18,13 +18,13 @@
             line-height: 1.6;
             text-align: center;
             cursor: url('https://cur.cursors-4u.net/games/gam-1/gam99.ani'), auto;
-            padding-bottom: 60px; /* Evita que el contenido sea tapado por el footer */
+            padding-bottom: 60px;
+            overflow-x: hidden;
         }
 
         header {
             background: linear-gradient(90deg, #00ffff, #ff00ff);
             padding: 40px 20px;
-            text-align: center;
             text-transform: uppercase;
             box-shadow: 0 0 15px #ff00ff;
         }
@@ -46,43 +46,27 @@
             padding: 20px;
             max-width: 900px;
             margin: 0 auto;
-            min-height: 80vh; /* Evita que el footer suba demasiado */
         }
 
-        /* Sección "Sobre Mí" */
-        .about-me {
+        .about-me, .knowledge, .projects {
             background: #222;
             padding: 20px;
             border: 2px solid #00ffcc;
             box-shadow: 0 0 10px #00ffcc;
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
         }
 
-        .about-me:hover {
+        .about-me:hover, .knowledge:hover, .projects:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px #00ffcc;
-        }
-
-        p {
-            font-size: 1em;
-            color: #fff;
-        }
-
-        /* Sección "Conocimientos" */
-        .knowledge {
-            background: #111;
-            padding: 20px;
-            border: 2px solid #ff00ff;
-            box-shadow: 0 0 10px #ff00ff;
-            border-radius: 10px;
         }
 
         .knowledge-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 15px;
-            text-align: center;
         }
 
         .knowledge-item {
@@ -101,21 +85,10 @@
             box-shadow: 0 0 15px #ffcc00;
         }
 
-        /* Sección "Proyectos" */
-        .projects {
-            background: #222;
-            padding: 20px;
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 10px #00ffcc;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 20px;
         }
 
         .project-card {
@@ -132,27 +105,21 @@
             box-shadow: 0 0 20px #ffcc00;
         }
 
-        .project-card h3 {
-            color: #ffcc00;
-            margin-bottom: 10px;
-        }
-
-        .project-card p {
-            color: #fff;
-            font-size: 0.9em;
-        }
-
         .project-card a {
             display: inline-block;
             margin-top: 10px;
-            color: #00ffcc;
+            padding: 10px;
+            background: #00ffcc;
+            color: #000;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: background 0.3s;
+            border-radius: 5px;
         }
 
         .project-card a:hover {
-            color: #ffcc00;
+            background: #ffcc00;
+            color: #000;
         }
 
         /* Footer */
@@ -160,21 +127,33 @@
             background: linear-gradient(90deg, #ff00ff, #00ffff);
             text-align: center;
             padding: 10px;
-            position: relative; /* Se cambió de fixed a relative */
             width: 100%;
             box-shadow: 0 -4px 10px #ff00ff;
         }
 
-        footer p {
-            margin: 0;
-            font-size: 1em;
-            color: #fff;
+        /* Enlaces sociales */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
+
+        .social-links a {
+            text-decoration: none;
+            color: #00ffcc;
+            font-size: 1.5em;
+            transition: transform 0.3s ease, color 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: #ffcc00;
+        }
+
     </style>
 </head>
 <body>
-    <div class="crt"></div>
-
     <header>
         <h1>🚀 ELINSE CARDENAS LOAIZA</h1>
         <p>🎮 Programador Junior | Nivel 1</p>
@@ -203,10 +182,60 @@
                 <div class="project-card">
                     <h3>SGC - Sistema Gestión Comercial</h3>
                     <p>Aplicación en C# para gestionar un centro comercial con operaciones CRUD.</p>
-                    <a href="https://github.com/elinsecl/GestionComercial.git" target="_blank">Repositorio</a>
+                    <a href="https://github.com/elinsecl/GestionComercial.git" target="_blank">🔗 Repositorio</a>
                 </div>
             </div>
         </section>
+
+        <section class="social">
+            <h2>🌐 Enlaces</h2>
+            <div class="social-links">
+                <a href="https://github.com/elinsecl" target="_blank">🐱 GitHub</a>
+                <a href="https://linkedin.com/in/elinse-cárdenas-loaiza-86a824356" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/elinsecl/elinsecl.github.io/raw/main/CV-Elinse%20Cardenas.pdf" target="_blank">📄 CV</a>
+
+            </div>
+        </section>
+        <section class="contact">
+            <h2>📧 Contacto</h2>
+            <p>Si deseas contactarme, puedes enviarme un correo electrónico.</p>
+            <a href="mailto:josueloaiza767@gmail.com" class="contact-button">📩 Enviar correo</a>
+        </section>
+        
+        <style>
+            .contact {
+                background: #222;
+                padding: 20px;
+                border: 2px solid #00ffcc;
+                box-shadow: 0 0 10px #00ffcc;
+                border-radius: 10px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                margin-top: 20px;
+            }
+        
+            .contact:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px #00ffcc;
+            }
+        
+            .contact-button {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 10px;
+                background: #00ffcc;
+                color: #000;
+                text-decoration: none;
+                font-weight: bold;
+                transition: background 0.3s;
+                border-radius: 5px;
+            }
+        
+            .contact-button:hover {
+                background: #ffcc00;
+                color: #000;
+            }
+        </style>
+        
     </div>
 
     <footer>
