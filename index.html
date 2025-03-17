@@ -20,6 +20,7 @@
             cursor: url('https://cur.cursors-4u.net/games/gam-1/gam99.ani'), auto;
             padding-bottom: 60px;
             overflow-x: hidden;
+            
         }
 
         header {
@@ -252,19 +253,20 @@
             </div>
         </section>
 
+        
+        <section class="contact">
+            <h2>📧 Contacto</h2>
+            <p>Si deseas contactarme, puedes enviarme un correo electrónico.</p>
+            <a href="mailto:josueloaiza767@gmail.com" class="contact-button">📩 Enviar correo</a>
+        </section>
+
         <section class="social">
             <h2>🌐 Enlaces</h2>
             <div class="social-links">
                 <a href="https://github.com/elinsecl" target="_blank">🐱 GitHub</a>
                 <a href="https://linkedin.com/in/elinse-cárdenas-loaiza-86a824356" target="_blank">💼 LinkedIn</a>
                 <a href="https://github.com/elinsecl/elinsecl.github.io/raw/main/CV-Elinse%20Cardenas.pdf" target="_blank">📄 CV</a>
-
             </div>
-        </section>
-        <section class="contact">
-            <h2>📧 Contacto</h2>
-            <p>Si deseas contactarme, puedes enviarme un correo electrónico.</p>
-            <a href="mailto:josueloaiza767@gmail.com" class="contact-button">📩 Enviar correo</a>
         </section>
         
         <style>
@@ -317,7 +319,7 @@
                 let windowHeight = window.innerHeight;
                 sections.forEach(section => {
                     let sectionTop = section.getBoundingClientRect().top;
-                    if (sectionTop < windowHeight - 90) {
+                    if (sectionTop < windowHeight - 70) {
                         section.classList.add("show");
                     }
                 });
