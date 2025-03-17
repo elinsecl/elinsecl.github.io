@@ -151,6 +151,17 @@
             color: #ffcc00;
         }
 
+        .about-me, .knowledge, .projects, .achievements, .contact {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
     </style>
 </head>
 <body>
@@ -293,5 +304,25 @@
     <footer>
         <p>🎵 Insert Coin | &copy; 2025 Elinse Cardenas Loaiza 🎮</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll(".about-me, .knowledge, .projects, .achievements, .contact");
+    
+            function reveal() {
+                let windowHeight = window.innerHeight;
+                sections.forEach(section => {
+                    let sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < windowHeight - 90) {
+                        section.classList.add("show");
+                    }
+                });
+            }
+    
+            window.addEventListener("scroll", reveal);
+            reveal();
+        });
+    </script>
+    
 </body>
 </html>
