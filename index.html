@@ -10,7 +10,7 @@
     <header>
         <h1>🚀 ELINSE CARDENAS LOAIZA</h1>
         <p>🎮 Programador Junior | Nivel 1</p>
-    </header>
+        <button id="theme-toggle" class="theme-button">🌞 Modo Claro</button>    </header>
 
     <div class="container">
         <section class="about-me">
@@ -196,6 +196,31 @@
         }, { once: true }); // Solo se ejecuta una vez
 
     </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+
+        // Verificar si hay un tema guardado en localStorage
+        if (localStorage.getItem("theme") === "light") {
+            body.classList.add("light-mode");
+            themeToggle.textContent = "🌙 Modo Oscuro";
+        }
+
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("light-mode");
+
+            if (body.classList.contains("light-mode")) {
+                themeToggle.textContent = "🌙 Modo Oscuro";
+                localStorage.setItem("theme", "light"); // Guardar estado
+            } else {
+                themeToggle.textContent = "🌞 Modo Claro";
+                localStorage.setItem("theme", "dark"); // Guardar estado
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
