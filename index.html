@@ -6,6 +6,38 @@
     <link rel="stylesheet" href="style.css">
     <title>🎮 Portafolio - Elinse Cardenas</title>
 </head>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Inicializar EmailJS con la clave pública
+        emailjs.init("scO1rObXRLMA82y94"); // Reemplaza con tu Public Key
+
+        // Agregar evento al formulario solo cuando la página esté cargada
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar recarga de la página
+            
+            console.log("Formulario enviado. Intentando enviar correo..."); // Log para verificar que el evento funciona
+            
+            const statusMessage = document.getElementById("status-message");
+            statusMessage.textContent = "⏳ Enviando mensaje...";
+
+            // Enviar el formulario con EmailJS
+            emailjs.sendForm("service_617perr", "template_iacgxpl", this)
+                .then(() => {
+                    console.log("✅ Correo enviado con éxito.");
+                    statusMessage.textContent = "✅ ¡Mensaje enviado con éxito!";
+                    this.reset(); // Limpia el formulario después de enviarlo
+                })
+                .catch((error) => {
+                    console.error("❌ Error al enviar el correo:", error);
+                    statusMessage.textContent = "❌ Error al enviar el mensaje. Revisa la consola.";
+                });
+        });
+    });
+</script>
+
+
 <body>
     <header>
         <h1>🚀 ELINSE CARDENAS LOAIZA</h1>
@@ -104,11 +136,20 @@
     </div>
 </section>
 
-        <section class="contact">
-            <h2>📧 Contacto</h2>
-            <p>Si deseas contactarme, puedes enviarme un correo electrónico.</p>
-            <a href="mailto:josueloaiza767@gmail.com" class="contact-button">📩 Enviar correo</a>
-        </section>
+<section class="contact">
+    <h2>📧 Contacto</h2>
+    <p>¡Déjame un mensaje y te responderé pronto!</p>
+    
+    <form id="contact-form">
+        <input type="text" name="title" placeholder="Título (Opcional)">
+        <input type="text" name="name" placeholder="Tu Nombre" required>
+        <input type="email" name="email" placeholder="Tu Correo" required>
+        <textarea name="message" placeholder="Escribe tu mensaje..." required></textarea>
+        <button type="submit">📩 Enviar Mensaje</button>
+    </form>
+    <p id="status-message"></p>
+</section>
+
 
         <section class="social">
             <h2>🌐 Enlaces</h2>
@@ -250,7 +291,14 @@
                 "contactTitle": "📧 Contacto",
                 "contactText": "Si deseas contactarme, puedes enviarme un correo electrónico.",
                 "languageButton": "🌍 English",
-                "linkTitle": "🌐 Enlaces"
+                "linkTitle": "🌐 Enlaces",
+                "formTitle": "Título (Opcional)",
+                "formName": "Tu Nombre",
+                "formEmail": "Tu Correo",
+                "formMessage": "Escribe tu mensaje...",
+                "formButton": "📩 Enviar Mensaje",
+                "successMessage": "✅ ¡Mensaje enviado con éxito!"
+
             },
             "en": {
                 "headerTitle": "🚀 ELINSE CARDENAS LOAIZA",
@@ -271,7 +319,13 @@
                 "contactTitle": "📧 Contact",
                 "contactText": "If you want to contact me, you can send me an email.",
                 "languageButton": "🌍 Español",
-                "linkTitle": "🌐 Links"
+                "linkTitle": "🌐 Links",
+                "formTitle": "Title (Optional)",
+                "formName": "Your Name",
+                "formEmail": "Your Email",
+                "formMessage": "Write your message...",
+                "formButton": "📩 Send Message",
+                "successMessage": "✅ Message sent successfully!"
             }
         };
 
@@ -314,8 +368,23 @@
             document.querySelectorAll(".project-card p")[1].textContent = translations[currentLanguage].projectUnavailable;
             document.querySelectorAll(".project-card h3")[2].textContent = translations[currentLanguage].projectUnavailable;
             document.querySelectorAll(".project-card p")[2].textContent = translations[currentLanguage].projectUnavailable;
-        }
-    });
+        
+                // 📝 Traducir placeholders del formulario
+            document.querySelector("input[name='title']").placeholder = translations[currentLanguage].formTitle;
+            document.querySelector("input[name='name']").placeholder = translations[currentLanguage].formName;
+            document.querySelector("input[name='email']").placeholder = translations[currentLanguage].formEmail;
+            document.querySelector("textarea[name='message']").placeholder = translations[currentLanguage].formMessage;
+
+            // 📝 Traducir el texto del botón
+            document.querySelector("button[type='submit']").textContent = translations[currentLanguage].formButton;
+
+            // 📝 Traducir el mensaje de éxito (si es necesario)
+            const statusMessage = document.getElementById("status-message");
+            if (statusMessage.textContent.includes("¡Mensaje enviado con éxito!")) {
+                statusMessage.textContent = translations[currentLanguage].successMessage;
+            }
+                }
+            });
 </script>
 
 
