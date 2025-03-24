@@ -392,20 +392,83 @@ transform: translateY(0);
 
 
 
-/* Botón de Cambio de Modo */
-#theme-toggle {
+
+/* Contenedor del interruptor */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 70px;
+    height: 34px;
+}
+
+/* Ocultar el checkbox */
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Diseño del interruptor */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #6b4668; /* Color de fondo (modo oscuro) */
+    transition: 0.4s;
+    border-radius: 34px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Diseño de la bolita */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/002/291/160/original/pixel-art-moon-and-stars-vector.jpg'); /* Imagen de la luna */
+    background-size: cover;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Cambia el color de fondo cuando está activado (modo claro) */
+input:checked + .slider {
+    background-color: #8ee8d4;
+}
+
+/* Mueve la bolita y cambia la imagen cuando está activado */
+input:checked + .slider:before {
+    transform: translateX(36px);
+    background-image: url('https://img.freepik.com/premium-vector/smiling-sun-vector-illustration-pixel-art-8-bit-retro-game-gameboy_1022685-79.jpg'); /* Imagen del sol */
+}
+
+
+
+
+/* Ajustes para el botón de idioma */
+.language-button {
     background: var(--button-bg);
     color: var(--button-text);
     padding: 10px;
     font-size: 14px;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     font-family: 'Press Start 2P', cursive;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
+
+    
 }
 
-#theme-toggle:hover {
+.language-button:hover {
     background: var(--border-color);
     transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(255, 102, 0, 0.8);
 }

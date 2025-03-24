@@ -10,7 +10,12 @@
     <header>
         <h1>🚀 ELINSE CARDENAS LOAIZA</h1>
         <p>🎮 Programador Junior | Nivel 1</p>
-        <button id="theme-toggle" class="theme-button">🌞 Modo Claro</button>    </header>
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+        <button id="language-toggle" class="language-button">🌍 English</button>
+    </header>
 
     <div class="container">
         <section class="about-me">
@@ -202,25 +207,117 @@
         const themeToggle = document.getElementById("theme-toggle");
         const body = document.body;
 
-        // Verificar si hay un tema guardado en localStorage
+        // Comprobar si hay un tema guardado en localStorage
         if (localStorage.getItem("theme") === "light") {
             body.classList.add("light-mode");
-            themeToggle.textContent = "🌙 Modo Oscuro";
+            themeToggle.checked = true;
         }
 
-        themeToggle.addEventListener("click", () => {
-            body.classList.toggle("light-mode");
-
-            if (body.classList.contains("light-mode")) {
-                themeToggle.textContent = "🌙 Modo Oscuro";
-                localStorage.setItem("theme", "light"); // Guardar estado
+        themeToggle.addEventListener("change", () => {
+            if (themeToggle.checked) {
+                body.classList.add("light-mode");
+                localStorage.setItem("theme", "light");
             } else {
-                themeToggle.textContent = "🌞 Modo Claro";
-                localStorage.setItem("theme", "dark"); // Guardar estado
+                body.classList.remove("light-mode");
+                localStorage.setItem("theme", "dark");
             }
         });
     });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const languageToggle = document.getElementById("language-toggle");
+
+        // Diccionario de traducciones
+        const translations = {
+            "es": {
+                "headerTitle": "🚀 ELINSE CARDENAS LOAIZA",
+                "headerSubtitle": "🎮 Programador Junior | Nivel 1",
+                "aboutMeTitle": "🕹️ Sobre Mí",
+                "aboutMeText": `"Hola, soy Elinse, un programador junior apasionado por el desarrollo de software. Me gusta aprender nuevos lenguajes, optimizar código y encontrar soluciones eficientes a los problemas. Siempre estoy en constante aprendizaje y busco mejorar mis habilidades para enfrentar nuevos desafíos en el mundo de la tecnología."`,
+                "skillsTitle": "💾 Habilidades",
+                "achievementsTitle": "🏆 Logros",
+                "achievement1": "✅ Bachillerato en Educación Media",
+                "achievement2": "🚀 Bachillerato en Informática Empresarial",
+                "achievement3": "💼 Cisco Networking Academy",
+                "achievement4": "🎯 Certificación Kickoff Agile",
+                "achievement5": "🎯 Certificación Kickoff Predictive",
+                "projectTitle": "📂 Proyectos",
+                "project1": "SGC - Sistema Gestión Comercial",
+                "project1Desc": "Aplicación en C# para gestionar un centro comercial con operaciones CRUD.",
+                "projectUnavailable": "No Disponible",
+                "contactTitle": "📧 Contacto",
+                "contactText": "Si deseas contactarme, puedes enviarme un correo electrónico.",
+                "languageButton": "🌍 English",
+                "linkTitle": "🌐 Enlaces"
+            },
+            "en": {
+                "headerTitle": "🚀 ELINSE CARDENAS LOAIZA",
+                "headerSubtitle": "🎮 Junior Developer | Level 1",
+                "aboutMeTitle": "🕹️ About Me",
+                "aboutMeText": `"Hi, I'm Elinse, a junior developer passionate about software development. I love learning new languages, optimizing code, and finding efficient solutions to problems. I am constantly learning and looking to improve my skills to face new challenges in the tech world."`,
+                "skillsTitle": "💾 Skills",
+                "achievementsTitle": "🏆 Achievements",
+                "achievement1": "✅ High School Diploma",
+                "achievement2": "🚀 Bachelor's Degree in Business Informatics",
+                "achievement3": "💼 Cisco Networking Academy",
+                "achievement4": "🎯 Kickoff Agile Certification",
+                "achievement5": "🎯 Kickoff Predictive Certification",
+                "projectTitle": "📂 Projects",
+                "project1": "SGC - Commercial Management System",
+                "project1Desc": "C# application to manage a shopping center with CRUD operations.",
+                "projectUnavailable": "Not Available",
+                "contactTitle": "📧 Contact",
+                "contactText": "If you want to contact me, you can send me an email.",
+                "languageButton": "🌍 Español",
+                "linkTitle": "🌐 Links"
+            }
+        };
+
+        // Obtener idioma guardado en localStorage o por defecto "es"
+        let currentLanguage = localStorage.getItem("language") || "es";
+        updateLanguage();
+
+        // Evento para cambiar idioma
+        languageToggle.addEventListener("click", function () {
+            currentLanguage = currentLanguage === "es" ? "en" : "es";
+            localStorage.setItem("language", currentLanguage);
+            updateLanguage();
+        });
+
+        // Función para actualizar el idioma
+        function updateLanguage() {
+            document.querySelector("h1").textContent = translations[currentLanguage].headerTitle;
+            document.querySelector("header p").textContent = translations[currentLanguage].headerSubtitle;
+            document.querySelector(".about-me h2").textContent = translations[currentLanguage].aboutMeTitle;
+            document.querySelector(".about-me p").textContent = translations[currentLanguage].aboutMeText;
+            document.querySelector(".knowledge h2").textContent = translations[currentLanguage].skillsTitle;
+            document.querySelector(".achievements h2").textContent = translations[currentLanguage].achievementsTitle;
+            document.querySelector(".projects h2").textContent = translations[currentLanguage].projectTitle;
+            document.querySelector(".contact h2").textContent = translations[currentLanguage].contactTitle;
+            document.querySelector(".contact p").textContent = translations[currentLanguage].contactText;
+            document.querySelector("#language-toggle").textContent = translations[currentLanguage].languageButton;
+            document.querySelector(".social h2").textContent = translations[currentLanguage].linkTitle;
+
+            // Traducir los logros
+            document.querySelectorAll(".achievement-item h3")[0].textContent = translations[currentLanguage].achievement1;
+            document.querySelectorAll(".achievement-item h3")[1].textContent = translations[currentLanguage].achievement2;
+            document.querySelectorAll(".achievement-item h3")[2].textContent = translations[currentLanguage].achievement3;
+            document.querySelectorAll(".achievement-item h3")[3].textContent = translations[currentLanguage].achievement4;
+            document.querySelectorAll(".achievement-item h3")[4].textContent = translations[currentLanguage].achievement5;
+
+            // Traducir los proyectos
+            document.querySelectorAll(".project-card h3")[0].textContent = translations[currentLanguage].project1;
+            document.querySelectorAll(".project-card p")[0].textContent = translations[currentLanguage].project1Desc;
+            document.querySelectorAll(".project-card h3")[1].textContent = translations[currentLanguage].projectUnavailable;
+            document.querySelectorAll(".project-card p")[1].textContent = translations[currentLanguage].projectUnavailable;
+            document.querySelectorAll(".project-card h3")[2].textContent = translations[currentLanguage].projectUnavailable;
+            document.querySelectorAll(".project-card p")[2].textContent = translations[currentLanguage].projectUnavailable;
+        }
+    });
+</script>
+
 
 </body>
 </html>
