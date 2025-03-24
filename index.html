@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="style.css">
     <title>🎮 Portafolio - Elinse Cardenas</title>
 </head>
+<nav id="navbar">
+    <ul>
+        <li><a id="menu-about" href="#about-me">🕹️ Sobre Mí</a></li>
+        <li><a id="menu-skills" href="#knowledge">💾 Habilidades</a></li>
+        <li><a id="menu-achievements" href="#achievements">🏆 Logros</a></li>
+        <li><a id="menu-projects" href="#projects">📂 Proyectos</a></li>
+        <li><a id="menu-contact" href="#contact">📧 Contacto</a></li>
+    </ul>
+</nav>
+
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
@@ -50,12 +60,12 @@
     </header>
 
     <div class="container">
-        <section class="about-me">
+        <section id="about-me" class="about-me">
             <h2>🕹️ Sobre Mí</h2>
             <p>"Hola, soy Elinse, un programador junior apasionado por el desarrollo de software. Me gusta aprender nuevos lenguajes, optimizar código y encontrar soluciones eficientes a los problemas. Siempre estoy en constante aprendizaje y busco mejorar mis habilidades para enfrentar nuevos desafíos en el mundo de la tecnología."</p>
         </section>
 
-        <section class="knowledge">
+        <section id="knowledge" class="knowledge">
             <h2>💾 Habilidades</h2>
             <div class="knowledge-grid">
                 <div class="knowledge-item">Python 🐍</div>
@@ -66,7 +76,7 @@
             </div>
         </section>
 
-        <section class="achievements">
+        <section id="achievements" class="achievements">
     <h2>🏆 Logros</h2>
     <div class="achievement-item">
         <h3>✅ Bachillerato en Educación Media</h3>
@@ -95,7 +105,7 @@
         </a>
     </div>
 </section>
-<section class="projects">
+<section id="projects" class="projects">
     <h2>📂 Proyectos</h2>
     <div class="project-slider">
         <!-- Proyecto 1 -->
@@ -136,7 +146,7 @@
     </div>
 </section>
 
-<section class="contact">
+<section id="contact" class="contact">
     <h2>📧 Contacto</h2>
     <p>¡Déjame un mensaje y te responderé pronto!</p>
     
@@ -297,7 +307,12 @@
                 "formEmail": "Tu Correo",
                 "formMessage": "Escribe tu mensaje...",
                 "formButton": "📩 Enviar Mensaje",
-                "successMessage": "✅ ¡Mensaje enviado con éxito!"
+                "successMessage": "✅ ¡Mensaje enviado con éxito!",
+                "menuAbout": "🕹️ Sobre Mí",
+                "menuSkills": "💾 Habilidades",
+                "menuAchievements": "🏆 Logros",
+                "menuProjects": "📂 Proyectos",
+                "menuContact": "📧 Contacto"
 
             },
             "en": {
@@ -325,7 +340,12 @@
                 "formEmail": "Your Email",
                 "formMessage": "Write your message...",
                 "formButton": "📩 Send Message",
-                "successMessage": "✅ Message sent successfully!"
+                "successMessage": "✅ Message sent successfully!",
+                "menuAbout": "🕹️ About Me",
+                "menuSkills": "💾 Skills",
+                "menuAchievements": "🏆 Achievements",
+                "menuProjects": "📂 Projects",
+                "menuContact": "📧 Contact"
             }
         };
 
@@ -353,6 +373,14 @@
             document.querySelector(".contact p").textContent = translations[currentLanguage].contactText;
             document.querySelector("#language-toggle").textContent = translations[currentLanguage].languageButton;
             document.querySelector(".social h2").textContent = translations[currentLanguage].linkTitle;
+
+
+            // 📝 Traducir el menú de navegación
+            document.getElementById("menu-about").textContent = translations[currentLanguage].menuAbout;
+            document.getElementById("menu-skills").textContent = translations[currentLanguage].menuSkills;
+            document.getElementById("menu-achievements").textContent = translations[currentLanguage].menuAchievements;
+            document.getElementById("menu-projects").textContent = translations[currentLanguage].menuProjects;
+            document.getElementById("menu-contact").textContent = translations[currentLanguage].menuContact;
 
             // Traducir los logros
             document.querySelectorAll(".achievement-item h3")[0].textContent = translations[currentLanguage].achievement1;
@@ -385,6 +413,34 @@
             }
                 }
             });
+</script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+
+        // Hacer que la navegación sea suave al hacer clic en un enlace
+        document.querySelectorAll("#navbar a").forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute("href").substring(1);
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            });
+        });
+    });
 </script>
 
 
